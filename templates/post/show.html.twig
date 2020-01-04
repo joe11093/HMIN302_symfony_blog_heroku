@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% if post %}
+{{ post.title }}
+{% else %}
+No Posts Available
+{% endif %}
+{% endblock %}
+
+{% block body %}
+
+
+<h1>{{ post.title }}</h1>
+    <small><em>published on: {{ post.publicationDate ? post.publicationDate|date('d/m/Y H:i:s') : '' }}</em></small>
+    <div class="my-3">
+<article class="row">
+    <div class="col">
+    <p>{{post.content}}</p>
+    </div>
+<div>               
+ 
+{% if is_granted('ROLE_ADMIN') %}
+
+{{ include('admin/post/_delete_form.html.twig') }}
+<br>
+<a class = "btn btn-warning" href="{{ path('post_edit', {'slug': post.slug}) }}">edit</a> 
+
+{% endif %}
+
+{% endblock %}

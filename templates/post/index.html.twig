@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Latest Posts{% endblock %}
+
+{% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+	<a href="{{ path('post_new') }}">Create new</a>
+{% endif %}
+ <h1>Published Posts</h1>
+    {% for post in posts %}
+    <section>
+        <h2>{{post.title}}</h2>
+        <small>published: {{ post.publicationDate.format('d/m/Y') }}</small>
+        <p>{{ post.getContent()|length > 50 ? post.getContent()|slice(0, 50) ~ '...' : post.getContent()  }}</p>
+        <a href="{{ path('post_show', {'slug' : post.getSlug()} )}}">continue reading...</a>
+    </section>
+    {% endfor %}
+
+<div class="row">
+ <div class="navigation col-md-2 col-md-offset-5">
+            {{ knp_pagination_render(posts) }}
+ </div>
+ </div> 
+{% endblock %}

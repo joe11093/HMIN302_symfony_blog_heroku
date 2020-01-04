@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Post{% endblock %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <h1>Create new Post</h1>
+
+    {{ include('admin/post/_form.html.twig') }}
+
+    <a href="{{ path('post_index', {'page': 1}) }}">back to list</a>
+{% endblock %}
