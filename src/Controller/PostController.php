@@ -31,8 +31,10 @@ class PostController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $postRepository = $em->getRepository(Post::class);
 
-        $allPostsQuery = $postRepository->createQueryBuilder('p')
-            ->getQuery();
+        //$allPostsQuery = $postRepository->createQueryBuilder('p')
+         //   ->getQuery();
+
+        $allPostsQuery = $postRepository->findBy([], ['publicationDate' => 'DESC']);
 
         // Paginate the results of the query
         $posts = $paginator->paginate(
@@ -41,7 +43,7 @@ class PostController extends AbstractController
             // Define the page parameter
             $request->query->getInt('page', 1),
             // Items per page
-            3
+            3,
         );
 
         return $this->render('post/index.html.twig', [

@@ -4,7 +4,7 @@
 
 {% block body %}
 {% if is_granted('ROLE_ADMIN') %}
-	<a href="{{ path('post_new') }}">Create new</a>
+	<a class="btn btn-success" href="{{ path('post_new') }}">Create new</a>
 {% endif %}
  <h1>Published Posts</h1>
     {% for post in posts %}
