@@ -4,7 +4,7 @@ SABA Joseph et RIMA Bachar
 
 Lien Heroku:
 ===============
-https://hmin302-symfony-blog.herokuapp.com/post/?page=1
+https://hmin302-symfony-blog.herokuapp.com/
 
 Compte admin:
 ===============
